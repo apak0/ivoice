@@ -1,4 +1,4 @@
-const exprconst const express = require("express");
+const express = require("express");
 const { createServer } = require("http");
 const { Server } = require("socket.io");
 const cors = require("cors");
@@ -9,7 +9,6 @@ const app = express();
 app.use(cors());
 
 const httpServer = createServer(app);
-const io = new Server(httpServer, { createServer(app);
 const io = new Server(httpServer, {
   cors: {
     origin: process.env.NODE_ENV === 'production' ? false : "http://localhost:3000",
@@ -25,23 +24,6 @@ app.use(express.static(path.join(__dirname, "../client/build")));
 // match one above, send back React's index.html file.
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "../client/build/index.html"));
-});quire("express");
-const { createServer } = require("http");
-const { Server } = require("socket.io");
-const cors = require("cors");
-const path = require("path");
-require("dotenv").config();
-
-const app = express();
-app.use(cors());
-
-const server = http.createServer(app);
-const io = new Server(server, {
-  cors: {
-    origin: process.env.CLIENT_URL || "http://localhost:3000",
-    methods: ["GET", "POST"],
-    credentials: true,
-  },
 });
 
 // Odaları saklamak için bir Map
@@ -76,7 +58,6 @@ io.on("connection", (socket) => {
     const roomIds = Array.from(socket.rooms);
     roomIds.forEach((roomId) => {
       if (roomId !== socket.id) {
-        // socket.id'yi hariç tut
         socket.to(roomId).emit("voice", data);
       }
     });
