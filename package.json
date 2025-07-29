@@ -1,13 +1,22 @@
 {
-  "name": "ivoice-server",
+  "name": "ivoice",
   "version": "1.0.0",
-  "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node src/server/server.js",
+    "install-deps": "npm install && cd src/client && npm install && cd ../server && npm install",
+    "build": "cd src/client && npm run build",
+    "dev": "concurrently \"cd src/server && npm run dev\" \"cd src/client && npm start\""
   },
   "dependencies": {
-    "cors": "^2.8.5",
     "express": "^4.17.1",
-    "socket.io": "^4.5.1"
+    "socket.io": "^4.7.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3"
+  },
+  "devDependencies": {
+    "concurrently": "^8.0.1"
+  },
+  "engines": {
+    "node": ">=14.0.0"
   }
 }
